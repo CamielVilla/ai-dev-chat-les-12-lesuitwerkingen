@@ -161,3 +161,4 @@ Lever de link naar de repository in met jouw werkende Next.js-applicatie. In de 
 
 **Let op:** lever je API-keys nooit in. Dit geldt voor je OpenAI API-key, je Supabase secret key en de key van de API die je hebt gekozen. Neem deze niet op in je broncode, README.md, screenshots of Git-repository. De applicatie moet de sleutels uit `.env.local` lezen.
 # novi-tool-calling-chatbot
+# ai-dev-chat-les-12-lesuitwerkingen
