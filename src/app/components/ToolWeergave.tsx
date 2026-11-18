@@ -1,5 +1,5 @@
 // Les 12: dit component bepaalt per tool en per state wat er in de chat verschijnt.
-// De opmaak staat al klaar in ToolStatus.tsx, VacatureLijst.tsx en VacatureKaart.tsx. Jij koppelt ze aan de tool-parts.
+// De opmaak staat al klaar in ToolStatus.tsx, VacatureLijst.tsx en VacatureKaart.tsx. Koppel ze aan de tool-parts.
 
 // TODO: vervang dit tijdelijke type door het type van een part uit je eigen berichttype.
 //       Leid dat af met InferUITools in src/lib/chat/types.ts, bijvoorbeeld: ChatMessage['parts'][number]

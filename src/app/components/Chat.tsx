@@ -22,6 +22,8 @@ export default function Chat ({ id, initialMessages }: ChatProps) {
     const [vacature, setVacature] = useState<Vacature | null>(null);
     const [vacatureFout, setVacatureFout] = useState<string | null>(null);
     const [isAnalyseren, setIsAnalyseren] = useState(false);
+    console.log(JSON.stringify(messages.at(-1), null, 2));
+
 
     async function analyseerVacature() {
         if (!input.trim()) return;
@@ -143,14 +145,14 @@ export default function Chat ({ id, initialMessages }: ChatProps) {
                         >
                             Verstuur
                         </button>
-                        <button
-                            type="button"
-                            onClick={analyseerVacature}
-                            disabled={!input.trim() || isAnalyseren}
-                            className="rounded-lg border border-blue-600 px-4 py-2 font-semibold text-blue-600 hover:bg-blue-50 disabled:opacity-50"
-                        >
-                            Analyseer als vacature
-                        </button>
+                        {/*<button*/}
+                        {/*    type="button"*/}
+                        {/*    onClick={analyseerVacature}*/}
+                        {/*    disabled={!input.trim() || isAnalyseren}*/}
+                        {/*    className="rounded-lg border border-blue-600 px-4 py-2 font-semibold text-blue-600 hover:bg-blue-50 disabled:opacity-50"*/}
+                        {/*>*/}
+                        {/*    Analyseer als vacature*/}
+                        {/*</button>*/}
                     </>
                 )}
             </form>

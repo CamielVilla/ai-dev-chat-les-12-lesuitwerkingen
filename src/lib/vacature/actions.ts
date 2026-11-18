@@ -15,11 +15,9 @@ const MAX_LENGTE = 5000;
 
 export async function extractVacature(tekst: string): Promise<VacatureResultaat> {
   const schoneTekst = tekst.trim();
-
   if (!schoneTekst) {
     return { error: 'Plak eerst een vacaturetekst.' };
   }
-
   if (schoneTekst.length > MAX_LENGTE) {
     return { error: `De tekst is te lang (maximaal ${MAX_LENGTE} tekens).` };
   }

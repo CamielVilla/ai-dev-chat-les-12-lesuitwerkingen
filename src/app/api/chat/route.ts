@@ -2,16 +2,19 @@ import { openai } from '@ai-sdk/openai';
 import {
   convertToModelMessages,
   createUIMessageStreamResponse,
-  generateId,
+  generateId, isStepCount,
   streamText,
   toUIMessageStream,
   type UIMessage,
 } from 'ai';
 import {saveChat} from "@/lib/chat/cruds";
+import {tools} from "@/lib/tools";
 
 export async function POST(request: Request) {
   // TODO: pas de instructies aan, zodat de assistent ook je tools mag gebruiken en geen vacatures verzint
-  const CONTEXT = 'Je bent een docent die alleen antwoorden mag geven over webdevelopment. Zeg geen dingen voor maar stuur gebruikers alleen in de goede richting. Antwoord in het nederlands in maximaal 5 zinnen'
+  const CONTEXT = 'Je bent een jobcoach. Antwoord in het nederlands in maximaal 5 zinnen. Beantwoord geen vragen die niks met werk te maken hebben.' +
+      'Gebruik zoekVacatures als de gebruiker naar openstaande vacatures vraagt. Verzin nooit vacatures die er niet zijn.' +
+      'Gebruik analyseerVacature als de gebruiker een vacaturetekst in de chat plakt.'
   const TEMPERATURE = 0.7
   const MAX_OUTPUT_TOKENS = 500
 
@@ -33,6 +36,8 @@ export async function POST(request: Request) {
       instructions: CONTEXT,
       temperature: TEMPERATURE,
       maxOutputTokens: MAX_OUTPUT_TOKENS,
+      tools,
+      stopWhen: isStepCount(5),
       // TODO: voeg je tools toe, bijvoorbeeld tools: { zoekVacatures, analyseerVacature }
       // TODO: laat het model meerdere stappen zetten met stopWhen: isStepCount(...)
       onEnd: ({usage}) => {
